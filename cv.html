@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Vũ Huy Thịnh</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #64748b;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --bg: #ffffff;
+            --bg-alt: #f8fafc;
+            --border: #e2e8f0;
+            --accent: #f59e0b;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --primary: #3b82f6;
+                --primary-dark: #60a5fa;
+                --secondary: #94a3b8;
+                --text: #f1f5f9;
+                --text-light: #94a3b8;
+                --bg: #0f172a;
+                --bg-alt: #1e293b;
+                --border: #334155;
+            }
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        .cv-header {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            margin-bottom: 40px;
+            padding-bottom: 32px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .profile-section {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .avatar {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 48px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+        }
+
+        .name {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .title {
+            font-size: 20px;
+            font-weight: 500;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-item svg {
+            width: 18px;
+            height: 18px;
+            stroke: var(--primary);
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .sidebar {
+            background: var(--bg-alt);
+            padding: 28px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .section-title {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary);
+            display: inline-block;
+        }
+
+        .skill-category {
+            margin-bottom: 24px;
+        }
+
+        .skill-category-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: var(--primary);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .skill-tag.secondary {
+            background: var(--bg);
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .language-item, .cert-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .language-item:last-child, .cert-item:last-child {
+            border-bottom: none;
+        }
+
+        .lang-name {
+            font-weight: 500;
+        }
+
+        .lang-level {
+            color: var(--text-light);
+            font-size: 13px;
+        }
+
+        .main-section {
+            margin-bottom: 32px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .section-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .section-icon svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .experience-item, .education-item, .project-item {
+            padding: 20px;
+            background: var(--bg-alt);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            margin-bottom: 16px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .experience-item:hover, .project-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .item-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .item-company {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        .item-date {
+            font-size: 13px;
+            color: var(--text-light);
+            white-space: nowrap;
+        }
+
+        .item-location {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        .item-description {
+            color: var(--text-light);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .item-description ul {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+
+        .item-description li {
+            margin-bottom: 6px;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 12px;
+        }
+
+        .tech-tag {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--text-light);
+        }
+
+        .summary {
+            font-size: 15px;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .divider {
+            height: 1px;
+            background: var(--border);
+            margin: 24px 0;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-light);
+            font-size: 13px;
+            border-top: 1px solid var(--border);
+        }
+
+        .print-btn {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(37, 99, 235, 0.4);
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        .print-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 28px rgba(37, 99, 235, 0.5);
+        }
+
+        .print-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        @media print {
+            .print-btn { display: none; }
+            .container { padding: 0; max-width: 100%; }
+            body { background: white; }
+            .sidebar { background: #f8fafc; break-inside: avoid; }
+            .experience-item, .education-item, .project-item { break-inside: avoid; }
+        }
+
+        @page {
+            margin: 20mm;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="cv-header">
+            <div class="profile-section">
+                <div class="avatar">NVA</div>
+                <h1 class="name">Nguyễn Văn A</h1>
+                <p class="title">Senior Fullstack Developer</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        <span>nguyenvana@email.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        <span>090 123 4567</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/></svg>
+                        <span>Hà Nội, Việt Nam</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        <span>github.com/nguyenvana</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                        <span>linkedin.com/in/nguyenvana</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <aside class="sidebar">
+                <section>
+                    <h2 class="section-title">Kỹ Năng</h2>
+                    <div class="skill-category">
+                        <h3 class="skill-category-title">Frontend</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">TypeScript</span>
+                            <span class="skill-tag">Next.js</span>
+                            <span class="skill-tag">Vue.js</span>
+                            <span class="skill-tag">Tailwind CSS</span>
+                            <span class="skill-tag">Redux</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3 class="skill-category-title">Backend</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">Express</span>
+                            <span class="skill-tag">NestJS</span>
+                            <span class="skill-tag">PostgreSQL</span>
+                            <span class="skill-tag">MongoDB</span>
+                            <span class="skill-tag">Redis</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3 class="skill-category-title">DevOps & Tools</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag secondary">Docker</span>
+                            <span class="skill-tag secondary">Kubernetes</span>
+                            <span class="skill-tag secondary">AWS</span>
+                            <span class="skill-tag secondary">CI/CD</span>
+                            <span class="skill-tag secondary">Git</span>
+                            <span class="skill-tag secondary">Linux</span>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="divider"></div>
+
+                <section>
+                    <h2 class="section-title">Ngôn Ngữ</h2>
+                    <div class="language-item">
+                        <span class="lang-name">Tiếng Việt</span>
+                        <span class="lang-level">Quốc ngữ</span>
+                    </div>
+                    <div class="language-item">
+                        <span class="lang-name">Tiếng Anh</span>
+                        <span class="lang-level">IELTS 7.5</span>
+                    </div>
+                    <div class="language-item">
+                        <span class="lang-name">Tiếng Nhật</span>
+                        <span class="lang-level">N3</span>
+                    </div>
+                </section>
+
+                <div class="divider"></div>
+
+                <section>
+                    <h2 class="section-title">Chứng Chỉ</h2>
+                    <div class="cert-item">
+                        <span class="lang-name">AWS Solutions Architect</span>
+                        <span class="lang-level">2023</span>
+                    </div>
+                    <div class="cert-item">
+                        <span class="lang-name">CKAD (Kubernetes)</span>
+                        <span class="lang-level">2022</span>
+                    </div>
+                    <div class="cert-item">
+                        <span class="lang-name">Professional Scrum Master I</span>
+                        <span class="lang-level">2021</span>
+                    </div>
+                </section>
+            </aside>
+
+            <main>
+                <section class="main-section">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                        <h2 class="section-title" style="border:none; padding:0; margin:0;">Mục Tiêu Nghề Nghiệp</h2>
+                    </div>
+                    <p class="summary">
+                        Senior Fullstack Developer với 6+ năm kinh nghiệm xây dựng các ứng dụng web quy mô lớn.
+                        Chuyên gia về React, Node.js và kiến trúc microservices. Có kinh nghiệm dẫn dắt team 5-8 người,
+                        tối ưu hiệu suất hệ thống và triển khai CI/CD pipelines. Đam mê giải quyết các bài toán phức tạp
+                        và học hỏi công nghệ mới.
+                    </p>
+                </section>
+
+                <section class="main-section">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+                        </div>
+                        <h2 class="section-title" style="border:none; padding:0; margin:0;">Kinh Nghiệm Làm Việc</h2>
+                    </div>
+
+                    <article class="experience-item">
+                        <div class="item-header">
+                            <div>
+                                <h3 class="item-title">Senior Fullstack Developer</h3>
+                                <p class="item-company">FPT Software</p>
+                            </div>
+                            <span class="item-date">03/2022 - Hiện tại</span>
+                        </div>
+                        <p class="item-location">Hà Nội, Việt Nam</p>
+                        <div class="item-description">
+                            <ul>
+                                <li>Dẫn dắt team 6 developers phát triển nền tảng e-commerce xử lý 100k+ đơn hàng/tháng</li>
+                                <li>Thiết kế kiến trúc microservices với Node.js, NestJS, PostgreSQL, Redis</li>
+                                <li>Tối ưu API response time từ 800ms xuống 120ms thông qua caching và query optimization</li>
+                                <li>Thiết lập CI/CD pipeline với GitLab CI, Docker, Kubernetes trên AWS EKS</li>
+                                <li>Mentor 3 junior developers, tổ chức code review và knowledge sharing hàng tuần</li>
+                            </ul>
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">NestJS</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Kubernetes</span>
+                            <span class="tech-tag">AWS</span>
+                        </div>
+                    </article>
+
+                    <article class="experience-item">
+                        <div class="item-header">
+                            <div>
+                                <h3 class="item-title">Fullstack Developer</h3>
+                                <p class="item-company">VNG Corporation</p>
+                            </div>
+                            <span class="item-date">06/2019 - 02/2022</span>
+                        </div>
+                        <p class="item-location">Hồ Chí Minh, Việt Nam</p>
+                        <div class="item-description">
+                            <ul>
+                                <li>Phát triển và bảo trì hệ thống chat real-time phục vụ 1M+ users quotidian</li>
+                                <li>Xây dựng admin dashboard với React, Redux, Ant Design cho team operation</li>
+                                <li>Tích hợp payment gateway (VNPay, MoMo, Stripe) cho hệ thống thanh toán</li>
+                                <li>Refactor legacy codebase từ jQuery sang React, giảm 40% bundle size</li>
+                                <li>Tham gia on-call rotation, xử lý incident và cải thiện system reliability</li>
+                            </ul>
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">Socket.io</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">Docker</span>
+                        </div>
+                    </article>
+
+                    <article class="experience-item">
+                        <div class="item-header">
+                            <div>
+                                <h3 class="item-title">Frontend Developer</h3>
+                                <p class="item-company">Sotatek</p>
+                            </div>
+                            <span class="item-date">01/2018 - 05/2019</span>
+                        </div>
+                        <p class="item-location">Hà Nội, Việt Nam</p>
+                        <div class="item-description">
+                            <ul>
+                                <li>Phát triển các dự án outsourcing cho khách hàng Nhật Bản, Mỹ, Úc</li>
+                                <li>Chuyển đổi thiết kế Figma/Zeplin sang pixel-perfect responsive HTML/CSS/JS</li>
+                                <li>Áp dụng Vue.js, Vuex cho các SPA phức tạp</li>
+                                <li>Tối ưu Core Web Vitals: LCP < 2.5s, CLS < 0.1, FID < 100ms</li>
+                                <li>Hợp tác chặt chẽ với backend team để thiết kế API contracts</li>
+                            </ul>
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">Vuex</span>
+                            <span class="tech-tag">SCSS</span>
+                            <span class="tech-tag">Webpack</span>
+                            <span class="tech-tag">Jest</span>
+                        </div>
+                    </article>
+                </section>
+
+                <section class="main-section">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                        </div>
+                        <h2 class="section-title" style="border:none; padding:0; margin:0;">Giáo Dục</h2>
+                    </div>
+
+                    <article class="education-item">
+                        <div class="item-header">
+                            <div>
+                                <h3 class="item-title">Thạc sĩ Khoa học Máy tính</h3>
+                                <p class="item-company">Đại học Bách Khoa Hà Nội</p>
+                            </div>
+                            <span class="item-date">2016 - 2018</span>
+                        </div>
+                        <div class="item-description">
+                            Chuyên ngành: Trí tuệ nhân tạo & Machine Learning<br>
+                            Luận văn: "Tối ưu hóa hiệu suất tìm kiếm thông tin trên big data sử dụng deep learning"
+                        </div>
+                    </article>
+
+                    <article class="education-item">
+                        <div class="item-header">
+                            <div>
+                                <h3 class="item-title">Cử nhân Kỹ thuật Phần mềm</h3>
+                                <p class="item-company">Đại học Công nghệ - ĐHQG Hà Nội</p>
+                            </div>
+                            <span class="item-date">2012 - 2016</span>
+                        </div>
+                        <div class="item-description">
+                            Xếp loại: Giỏi (GPA: 3.6/4.0)<br>
+                            Hoạt động: Trưởng nhóm CLB Lập trình, Giải nhì Cuộc thi Lập trình Quốc gia 2015
+                        </div>
+                    </article>
+                </section>
+
+                <section class="main-section">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+                        </div>
+                        <h2 class="section-title" style="border:none; padding:0; margin:0;">Dự Án Nổi Bật</h2>
+                    </div>
+
+                    <article class="project-item">
+                        <div class="item-header">
+                            <h3 class="item-title">E-Commerce Platform (Microservices)</h3>
+                            <span class="item-date">2023</span>
+                        </div>
+                        <div class="item-description">
+                            Nền tảng thương mại điện tử quy mô lớn với kiến trúc microservices: User Service, Product Service, Order Service, Payment Service, Notification Service. Xử lý 10k+ concurrent users.
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">NestJS</span>
+                            <span class="tech-tag">Kafka</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Redis</span>
+                            <span class="tech-tag">K8s</span>
+                        </div>
+                    </article>
+
+                    <article class="project-item">
+                        <div class="item-header">
+                            <h3 class="item-title">Real-time Collaboration Tool</h3>
+                            <span class="item-date">2022</span>
+                        </div>
+                        <div class="item-description">
+                            Công cụ cộng tác real-time cho team remote: đồng thời chỉnh sửa document, video call tích hợp, quản lý task board. Sử dụng WebRTC, Socket.io, CRDT cho conflict resolution.
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">WebRTC</span>
+                            <span class="tech-tag">Socket.io</span>
+                            <span class="tech-tag">MongoDB</span>
+                        </div>
+                    </article>
+
+                    <article class="project-item">
+                        <div class="item-header">
+                            <h3 class="item-title">AI-powered Code Review Bot</h3>
+                            <span class="item-date">2024</span>
+                        </div>
+                        <div class="item-description">
+                            Bot tự động review code trên GitHub/GitLab sử dụng LLM (GPT-4, CodeLlama). Phát hiện bug, security issues, code smell, và gợi ý cải thiện. Tích hợp vào CI/CD pipeline.
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">FastAPI</span>
+                            <span class="tech-tag">LangChain</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Docker</span>
+                        </div>
+                    </article>
+                </section>
+            </main>
+        </div>
+
+        <footer class="footer">
+            <p>Cập nhật lần cuối: Tháng 10/2024 • Được tạo với HTML & CSS</p>
+        </footer>
+    </div>
+
+    <button class="print-btn" onclick="window.print()" title="In hoặc lưu thành PDF">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 6 2 18 2 18 9"></polyline>
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+            <rect x="6" y="14" width="12" height="8"></rect>
+        </svg>
+        In / Lưu PDF
+    </button>
+</body>
+</html>
